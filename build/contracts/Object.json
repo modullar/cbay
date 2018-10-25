@@ -1,0 +1,97 @@
+{
+  "contractName": "Object",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058206e2841ddb1ab22b57178d37a14e58c09402cfc8f8e9f4c1db078df6c1ba73f190029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058206e2841ddb1ab22b57178d37a14e58c09402cfc8f8e9f4c1db078df6c1ba73f190029",
+  "sourceMap": "28:22:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;28:22:1;;;;;;;",
+  "deployedSourceMap": "28:22:1:-;;;;;",
+  "source": "pragma solidity ^0.4.24;\n\n\n\ncontract Object {\n  \n}\n",
+  "sourcePath": "/home/mq/cryptoobjects/contracts/object.sol",
+  "ast": {
+    "absolutePath": "/home/mq/cryptoobjects/contracts/object.sol",
+    "exportedSymbols": {
+      "Object": [
+        59
+      ]
+    },
+    "id": 60,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 59,
+        "linearizedBaseContracts": [
+          59
+        ],
+        "name": "Object",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 60,
+        "src": "28:22:1"
+      }
+    ],
+    "src": "0:51:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/mq/cryptoobjects/contracts/object.sol",
+    "exportedSymbols": {
+      "Object": [
+        59
+      ]
+    },
+    "id": 60,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 59,
+        "linearizedBaseContracts": [
+          59
+        ],
+        "name": "Object",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 60,
+        "src": "28:22:1"
+      }
+    ],
+    "src": "0:51:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-10-25T14:55:26.626Z"
+}
