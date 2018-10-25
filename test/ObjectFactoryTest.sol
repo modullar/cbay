@@ -17,12 +17,12 @@ contract ObjectFactoryTest {
     Assert.equal(objectFactory.createObject('sofa', 10, 100), true, 'A new object is created');
     Assert.equal(objectFactory.objectsCount(), 1, 'A new object is created');
     string memory name;
-    uint8 status;
+    ObjectFactory.Status status;
     uint64 bettorsCount;
     uint totalCost;
     (name, status, bettorsCount, totalCost) = (objectFactory.getObject(0));
     Assert.equal(keccak256(abi.encode(name)), keccak256(abi.encode('sofa')), 'should have the same name');
-    Assert.equal(uint(status), uint(0), 'should have the status 0');
+    Assert.equal(uint(status), uint(ObjectFactory.Status.inactive), 'should have the status inactive');
     Assert.equal(uint(bettorsCount), uint(10), 'should be 10 bettors');
     Assert.equal(uint(totalCost), uint(100), 'should have 100 total costs');
 //    Assert.equal(objectFactory.ownerObjectsCount[owner], 1, 'the owner has 1 object');
