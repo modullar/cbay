@@ -1,43 +1,52 @@
 pragma solidity ^0.4.24;
 
+import "./SafeMath.sol";
+// Needs to be Ownable for later.
 
 contract ObjectFactory {
 
-  event newObject(uint objectId, string name, uint64 _bettorsCount,
-                  uint _totalCost);
+  event newObject(uint objectId, string name, uint _totalCostInEther, uint _numBettors);
 
   enum Status {inactive, active, processed}
 
   struct Object{
     string name;
     Status status;
-    uint64 bettorsCount;
-    uint totalCost;
+    uint totalCostInEther;
+    uint numBettors;
+    mapping (uint => address) bettors;
   }
 
   Object[] public objects;
 
   mapping (uint => address) public objectToOwner;
   mapping (address => uint) ownerObjectsCount;
+  mapping (uint => uint) public betToObject;
 
-  function _createObject(string _name, uint64 _bettorsCount, uint _totalCost) internal {
-    uint id = objects.push(Object(_name, Status.inactive, _bettorsCount, _totalCost));
+  function createObject(string _name, uint _totalCostInEther, uint _numBettors) public payable returns(bool success) {
+    //require(msg.value == ((_totalCostInEther * 5)/100));
+    _createObject(_name, _totalCostInEther, _numBettors);
+    return true;
+  }
+
+  function objectFund(uint _id) public view returns(uint){
+    return(objects[_id].totalCostInEther);
+  }
+
+  function _createObject(string _name, uint _totalCostInEther, uint _numBettors) internal {
+    uint id = objects.push(Object(_name, Status.inactive, _totalCostInEther, _numBettors));
     objectToOwner[id] = msg.sender;
     ownerObjectsCount[msg.sender]++;
-    emit newObject(id, _name, _bettorsCount, _totalCost);
+    emit newObject(id, _name, _totalCostInEther, _numBettors);
   }
 
   function objectsCount() external view returns(uint){
     return objects.length;
   }
 
-  function getObject(uint id) external view returns(string, Status, uint64, uint) {
-    Object memory o = objects[id];
-    return(o.name, o.status, o.bettorsCount, o.totalCost);
+  function getObject(uint _id) public view returns(string, Status, uint, uint) {
+    Object memory o = objects[_id];
+    return(o.name, o.status, o.numBettors, o.totalCostInEther);
   }
 
-  function createObject(string _name, uint64 _bettorsCount, uint _totalCost) public returns(bool success) {
-    _createObject(_name, _bettorsCount, _totalCost);
-    return true;
-  }
 }
