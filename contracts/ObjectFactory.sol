@@ -5,6 +5,8 @@ import "./SafeMath.sol";
 
 contract ObjectFactory {
 
+  uint depositPercent = 10;
+
   event newObject(uint objectId, string name, uint _totalCostInEther, uint _numBettors);
 
   enum Status {inactive, active, processed}
@@ -30,7 +32,11 @@ contract ObjectFactory {
   }
 
   function objectFund(uint _id) public view returns(uint){
-    return(objects[_id].totalCostInEther);
+    return(objects[_id].totalCostInEther / objects[_id].numBettors);
+  }
+
+  function objectBetAmount(uint _id) view public returns(uint){
+    return(objects[_id].totalCostInEther * depositPercent / 100);
   }
 
   function _createObject(string _name, uint _totalCostInEther, uint _numBettors) internal {
